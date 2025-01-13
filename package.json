@@ -100,7 +100,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
     "sharp": "^0.33.5",
-    "source-map-support": "^0.5.21"
+    "source-map-support": "^0.5.21",
+    "electron-gesture": "^1.0.0"
   },
   "devDependencies": {
     "@electron/rebuild": "^3.3.0",

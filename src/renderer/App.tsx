@@ -1,4 +1,6 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { ipcRenderer } from 'electron';
 import icon from '../../assets/icon.png';
 import './styles/App.css';
 
@@ -16,6 +18,18 @@ function Hello() {
 }
 
 export default function App() {
+  useEffect(() => {
+    const handleNavigateBack = () => {
+      window.history.back();
+    };
+
+    ipcRenderer.on('navigate-back', handleNavigateBack);
+
+    return () => {
+      ipcRenderer.removeListener('navigate-back', handleNavigateBack);
+    };
+  }, []);
+
   return (
     <Router>
       <Routes>

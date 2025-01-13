@@ -1,4 +1,3 @@
-// src/main/main.ts
 import path from 'path';
 import {
   app,
@@ -8,6 +7,7 @@ import {
   dialog,
   Menu,
   Tray,
+  ipcMain,
 } from 'electron';
 import { autoUpdater } from 'electron-updater';
 
@@ -259,6 +259,12 @@ const createWindow = async (updateAvailable: boolean) => {
 
   const menu = Menu.buildFromTemplate(menuTemplate as any);
   Menu.setApplicationMenu(menu);
+
+  mainWindow.on('swipe', (event, direction) => {
+    if (direction === 'left') {
+      mainWindow?.webContents.send('navigate-back');
+    }
+  });
 };
 
 app.on('window-all-closed', () => {
