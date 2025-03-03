@@ -265,6 +265,12 @@ const createWindow = async (updateAvailable: boolean) => {
       mainWindow?.webContents.send('navigate-back');
     }
   });
+
+  mainWindow.on('swipe', (event, direction) => {
+    if (direction === 'right') {
+      mainWindow?.webContents.send('navigate-forward');
+    }
+  });
 };
 
 app.on('window-all-closed', () => {
@@ -286,3 +292,11 @@ app
   .catch((err: Error) => {
     console.error('Error creating window:', err);
   });
+
+ipcMain.on('navigate-back', () => {
+  mainWindow?.webContents.goBack();
+});
+
+ipcMain.on('navigate-forward', () => {
+  mainWindow?.webContents.goForward();
+});
