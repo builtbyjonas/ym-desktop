@@ -6,7 +6,7 @@ on:
 
 jobs:
   update-release-to-draft:
-    if: ${{ github.repository_owner == 'binary-blazer' }}
+    if: ${{ github.repository_owner == 'builtbyjonas' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +29,7 @@ jobs:
 
   publish-macos:
     needs: update-release-to-draft
-    if: ${{ github.repository_owner == 'binary-blazer' }}
+    if: ${{ github.repository_owner == 'builtbyjonas' }}
     runs-on: macos-latest
 
     steps:
@@ -61,7 +61,7 @@ jobs:
 
   publish-ubuntu:
     needs: update-release-to-draft
-    if: ${{ github.repository_owner == 'binary-blazer' }}
+    if: ${{ github.repository_owner == 'builtbyjonas' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -96,7 +96,7 @@ jobs:
 
   publish-windows:
     needs: update-release-to-draft
-    if: ${{ github.repository_owner == 'binary-blazer' }}
+    if: ${{ github.repository_owner == 'builtbyjonas' }}
     runs-on: windows-latest
 
     steps:
@@ -128,7 +128,7 @@ jobs:
 
   update-release-to-original:
     needs: [publish-macos, publish-ubuntu, publish-windows]
-    if: ${{ github.repository_owner == 'binary-blazer' }}
+    if: ${{ github.repository_owner == 'builtbyjonas' }}
     runs-on: ubuntu-latest
 
     steps:
