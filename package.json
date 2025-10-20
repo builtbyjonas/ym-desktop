@@ -1,7 +1,7 @@
 {
   "name": "ym-desktop",
   "description": "The YouTube music desktop app. Access YouTube music easily through an Application. Built for Windows, Linux and macOS.",
-  "version": "v1.4.6",
+  "version": "v1.5.0",
   "homepage": "https://github.com/binary-blazer/ym-desktop#readme",
   "bugs": {
     "url": "https://github.com/binary-blazer/ym-desktop/issues"
