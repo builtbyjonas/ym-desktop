@@ -211,8 +211,8 @@ importers:
         specifier: ^16.0.5
         version: 16.0.5(sass@1.83.1)(webpack@5.97.1)
       style-loader:
-        specifier: ^3.3.3
-        version: 3.3.4(webpack@5.97.1)
+        specifier: ^4.0.0
+        version: 4.0.0(webpack@5.97.1)
       terser-webpack-plugin:
         specifier: ^5.3.9
         version: 5.3.11(webpack@5.97.1)
@@ -6020,11 +6020,11 @@ packages:
     resolution: {integrity: sha512-FhwotcEqjr241ZbjFzjlIYg6c5/L/s4yBGWSMvJ9UoExiSqL+FnFA/CaeZx17WGaZMS/4SOZp8wH18jSS4R4lw==}
     engines: {node: '>=16'}
 
-  style-loader@3.3.4:
-    resolution: {integrity: sha512-0WqXzrsMTyb8yjZJHDqwmnwRJvhALK9LfRtRc6B4UTWe8AijYLZYZ9thuJTZc2VfQWINADW/j+LiJnfy2RoC1w==}
-    engines: {node: '>= 12.13.0'}
+  style-loader@4.0.0:
+    resolution: {integrity: sha512-1V4WqhhZZgjVAVJyt7TdDPZoPBPNHbekX4fWnCJL1yQukhCeZhJySUL+gL9y6sNdN95uEOS83Y55SqHcP7MzLA==}
+    engines: {node: '>= 18.12.0'}
     peerDependencies:
-      webpack: ^5.0.0
+      webpack: ^5.27.0
 
   stylehacks@7.0.4:
     resolution: {integrity: sha512-i4zfNrGMt9SB4xRK9L83rlsFCgdGANfeDAYacO1pkqcE7cRHPdWHwnKZVz7WY17Veq/FvyYsRAU++Ga+qDFIww==}
@@ -13654,7 +13654,7 @@ snapshots:
       '@tokenizer/token': 0.3.0
       peek-readable: 5.4.2
 
-  style-loader@3.3.4(webpack@5.97.1):
+  style-loader@4.0.0(webpack@5.97.1):
     dependencies:
       webpack: 5.97.1(webpack-cli@6.0.1)
 
