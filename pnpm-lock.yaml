@@ -136,8 +136,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.1
       electronmon:
-        specifier: ^2.0.2
-        version: 2.0.3
+        specifier: ^2.0.4
+        version: 2.0.4
       eslint:
         specifier: ^8.49.0
         version: 8.57.1
@@ -3083,8 +3083,8 @@ packages:
     engines: {node: '>= 12.20.55'}
     hasBin: true
 
-  electronmon@2.0.3:
-    resolution: {integrity: sha512-vpsNupi9sCzOCvx8GACbSHKEImkNF2a6pU5Io2yabARbJeQ/8ZuY7t/43LilF6Qw0nZ0MbKQt4sO3x0F3drpQQ==}
+  electronmon@2.0.4:
+    resolution: {integrity: sha512-u6eDrvUbqa+wsnMrhG2vHmo5neL1owLg2e5i1avGWcOb4rHsUf9lSfbs0FvfPsBNpLxxlPO98nrMhAGV+zw/fQ==}
     engines: {node: '>=10.0.0'}
     hasBin: true
 
@@ -10104,7 +10104,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  electronmon@2.0.3:
+  electronmon@2.0.4:
     dependencies:
       chalk: 3.0.0
       import-from: 3.0.0
