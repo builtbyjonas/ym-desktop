@@ -76,8 +76,8 @@ importers:
         specifier: ^15.0.7
         version: 15.0.7(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/imagemin-svgo':
-        specifier: ^10.0.5
-        version: 10.0.5
+        specifier: ^11.0.0
+        version: 11.0.0
       '@types/jest':
         specifier: ^29.5.5
         version: 29.5.14
@@ -1679,11 +1679,11 @@ packages:
   '@types/http-proxy@1.17.16':
     resolution: {integrity: sha512-sdWoUajOB1cd0A8cRRQ1cfyWNbmFKLAqBB89Y8x5iYyG/mkJHc0YUH8pdWBy2omi9qtCpiIgGjuwO0dQST2l5w==}
 
-  '@types/imagemin-svgo@10.0.5':
-    resolution: {integrity: sha512-9U2Rf7vWBHeqJvzmWNP3vYAKqR0208QqQ9Mkrq9OLIL5AeoF/dRVRou6iUYCufBSim57BpBpCJhZLrTgfS3k1g==}
+  '@types/imagemin-svgo@11.0.0':
+    resolution: {integrity: sha512-NNwCDWaiD8u9zMgRZBwClgnhovpZJeckfAHEBRgBvRmUZQoja6+XzGKZHJra32+8dp6e1yL4fc2S9rM8d94acQ==}
 
-  '@types/imagemin@9.0.0':
-    resolution: {integrity: sha512-4IaT+BdPUAFf/AAy3XlFAbqGk4RawhdidxWO5XTe+PJAYAr4d7m2FHiqyEPXbDpwS+IaLIJq5AIjLE9HcwMGBg==}
+  '@types/imagemin@9.0.1':
+    resolution: {integrity: sha512-xMWpvrUhtYxl6EeW+UhVH3rwUKhCRx21XddcoWByjDAasXZT5pQaCn0YVnXoTijX5hlTrGqV4TGQL/Htpp00+w==}
 
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
@@ -1777,9 +1777,6 @@ packages:
 
   '@types/stack-utils@2.0.3':
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
-
-  '@types/svgo@2.6.4':
-    resolution: {integrity: sha512-l4cmyPEckf8moNYHdJ+4wkHvFxjyW6ulm9l4YGaOxeyBWPhBOT0gvni1InpFPdzx1dKf/2s62qGITwxNWnPQng==}
 
   '@types/tough-cookie@4.0.5':
     resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
@@ -2766,8 +2763,8 @@ packages:
   css-select@4.3.0:
     resolution: {integrity: sha512-wPpOYtnsVontu2mODhA19JrqWxNsfdatRKd64kmpRbQgh1KtItko5sTnEpPdpSaJszTOhEMlF/RPz28qj4HqhQ==}
 
-  css-select@5.1.0:
-    resolution: {integrity: sha512-nwoRF1rvRRnnCqqY7updORDsuqKzqYJ28+oSMaJMMgOauh3fvwHqMS7EZpIPqK8GL+g9mKxF1vP/ZjSeNjEVHg==}
+  css-select@5.2.2:
+    resolution: {integrity: sha512-TizTzUddG/xYLA3NXodFM0fSbNizXjOKhqiQQwvhlspadZokn1KDy0NZFS0wuEubIYAV5/c1/lAr0TaaFXEXzw==}
 
   css-tree@2.2.1:
     resolution: {integrity: sha512-OA0mILzGc1kCOCSJerOeqDxDQ4HOh+G8NbOJFOTgOCzpw7fCBubk0fEyxp8AgOL/jvLgYA/uV0cMbe43ElF1JA==}
@@ -2776,10 +2773,6 @@ packages:
   css-tree@2.3.1:
     resolution: {integrity: sha512-6Fv1DV/TYw//QF5IzQdqsNDjx/wc8TrMBZsqjL9eW01tWb7R7k/mq+/VXfJCl7SoD5emsJop9cOByJZfs8hYIw==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
-
-  css-what@6.1.0:
-    resolution: {integrity: sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==}
-    engines: {node: '>= 6'}
 
   css-what@6.2.2:
     resolution: {integrity: sha512-u/O3vwbptzhMs3L1fQE82ZSLHQQfto5gyZzwteVIEyeaY5Fc7R4dapF/BvRoSYFeqfBk4m0V1Vafq5Pjv25wvA==}
@@ -8470,12 +8463,12 @@ snapshots:
     dependencies:
       '@types/node': 24.8.1
 
-  '@types/imagemin-svgo@10.0.5':
+  '@types/imagemin-svgo@11.0.0':
     dependencies:
-      '@types/imagemin': 9.0.0
-      '@types/svgo': 2.6.4
+      '@types/imagemin': 9.0.1
+      svgo: 3.3.2
 
-  '@types/imagemin@9.0.0':
+  '@types/imagemin@9.0.1':
     dependencies:
       '@types/node': 24.8.1
 
@@ -8585,10 +8578,6 @@ snapshots:
       '@types/node': 24.8.1
 
   '@types/stack-utils@2.0.3': {}
-
-  '@types/svgo@2.6.4':
-    dependencies:
-      '@types/node': 24.8.1
 
   '@types/tough-cookie@4.0.5': {}
 
@@ -9818,10 +9807,10 @@ snapshots:
       domutils: 2.8.0
       nth-check: 2.1.1
 
-  css-select@5.1.0:
+  css-select@5.2.2:
     dependencies:
       boolbase: 1.0.0
-      css-what: 6.1.0
+      css-what: 6.2.2
       domhandler: 5.0.3
       domutils: 3.2.2
       nth-check: 2.1.1
@@ -9835,8 +9824,6 @@ snapshots:
     dependencies:
       mdn-data: 2.0.30
       source-map-js: 1.2.1
-
-  css-what@6.1.0: {}
 
   css-what@6.2.2: {}
 
@@ -13810,9 +13797,9 @@ snapshots:
     dependencies:
       '@trysound/sax': 0.2.0
       commander: 7.2.0
-      css-select: 5.1.0
+      css-select: 5.2.2
       css-tree: 2.3.1
-      css-what: 6.1.0
+      css-what: 6.2.2
       csso: 5.0.5
       picocolors: 1.1.1
 
