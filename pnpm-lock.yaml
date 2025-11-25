@@ -112,8 +112,8 @@ importers:
         specifier: ^9.2.1
         version: 9.2.1
       core-js:
-        specifier: ^3.32.2
-        version: 3.40.0
+        specifier: ^3.47.0
+        version: 3.47.0
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -2753,8 +2753,8 @@ packages:
   core-js-pure@3.45.1:
     resolution: {integrity: sha512-OHnWFKgTUshEU8MK+lOs1H8kC8GkTi9Z1tvNkxrCcw9wl3MJIO7q2ld77wjWn4/xuGrVu2X+nME1iIIPBSdyEQ==}
 
-  core-js@3.40.0:
-    resolution: {integrity: sha512-7vsMc/Lty6AGnn7uFpYT56QesI5D2Y/UkgKounk87OP9Z2H9Z8kj6jzcSGAxFmUtDOS0ntK6lbQz+Nsa0Jj6mQ==}
+  core-js@3.47.0:
+    resolution: {integrity: sha512-c3Q2VVkGAUyupsjRnaNX6u8Dq2vAdzm9iuPj5FW0fRxzlxgq9Q39MDq10IvmQSpLgHQNyQzQmOo6bgGHmH3NNg==}
 
   core-util-is@1.0.2:
     resolution: {integrity: sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==}
@@ -9909,7 +9909,7 @@ snapshots:
 
   core-js-pure@3.45.1: {}
 
-  core-js@3.40.0: {}
+  core-js@3.47.0: {}
 
   core-util-is@1.0.2:
     optional: true
