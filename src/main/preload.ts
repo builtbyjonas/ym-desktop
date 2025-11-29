@@ -27,3 +27,14 @@ const electronHandler = {
 contextBridge.exposeInMainWorld('electron', electronHandler);
 
 export type ElectronHandler = typeof electronHandler;
+
+window.addEventListener(
+  'wheel',
+  (event) => {
+    if (event.ctrlKey) {
+      event.preventDefault();
+      ipcRenderer.send('resize-window', event.deltaY);
+    }
+  },
+  { passive: false, capture: true },
+);

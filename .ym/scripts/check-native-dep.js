@@ -16,7 +16,7 @@ if (dependencies) {
     // because of a devDependency then that is okay. Warn when it is installed
     // because of a dependency
     const { dependencies: dependenciesObject } = JSON.parse(
-      execSync(`npm ls ${nativeDeps.join(' ')} --json`).toString(),
+      execSync(`pnpm ls ${nativeDeps.join(' ')} --json`).toString(),
     );
     const rootDependencies = Object.keys(dependenciesObject);
     const filteredRootDependencies = rootDependencies.filter((rootDependency) =>
@@ -32,13 +32,13 @@ ${bold(filteredRootDependencies.join(', '))} ${
         plural ? 'are native dependencies' : 'is a native dependency'
       } and should be installed inside of the "./release/app" folder.
  First, uninstall the packages from "./package.json":
-${whiteBright(bgGreen(bold('npm uninstall your-package')))}
+${whiteBright(bgGreen(bold('pnpm uninstall your-package')))}
  ${bold(
    'Then, instead of installing the package to the root "./package.json":',
  )}
-${whiteBright(bgRed(bold('npm install your-package')))}
+${whiteBright(bgRed(bold('pnpm install your-package')))}
  ${bold('Install the package to "./release/app/package.json"')}
-${whiteBright(bgGreen(bold('cd ./release/app && npm install your-package')))}
+${whiteBright(bgGreen(bold('cd ./release/app && pnpm install your-package')))}
  Read more about native dependencies at:
 ${bold(
   'https://electron-react-boilerplate.js.org/docs/adding-dependencies/#module-structure',

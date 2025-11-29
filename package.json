@@ -2,18 +2,18 @@
   "name": "ym-desktop",
   "description": "The YouTube music desktop app. Access YouTube music easily through an Application. Built for Windows, Linux and macOS.",
   "version": "v1.6.0",
-  "homepage": "https://github.com/binary-blazer/ym-desktop#readme",
+  "homepage": "https://github.com/builtbyjonas/ym-desktop#readme",
   "bugs": {
-    "url": "https://github.com/binary-blazer/ym-desktop/issues"
+    "url": "https://github.com/builtbyjonas/ym-desktop/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/binary-blazer/ym-desktop.git"
+    "url": "git+https://github.com/builtbyjonas/ym-desktop.git"
   },
   "license": "Apache-2.0",
   "author": {
-    "name": "Jonas F. Franke (BinaryBlazer)",
-    "email": "jonasfranke@sdevs.org",
+    "name": "Jonas F. Franke (ByJonas)",
+    "email": "me@binaryblazer.me",
     "url": "https://binaryblazer.me"
   },
   "main": "./src/main/main.ts",
@@ -117,6 +117,7 @@
     "@types/react-dom": "^18.2.7",
     "@types/react-test-renderer": "^18.0.1",
     "@types/sharp": "^0.32.0",
+    "@types/source-map-support": "^0.5.10",
     "@types/webpack-bundle-analyzer": "^4.6.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^6.7.0",

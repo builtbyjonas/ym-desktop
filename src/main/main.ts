@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 import {
   app,
   BrowserWindow,
@@ -9,37 +10,30 @@ import {
   Tray,
   ipcMain,
 } from 'electron';
-import { autoUpdater } from 'electron-updater';
+import electronUpdater from 'electron-updater';
 
-import { version } from '../../package.json';
+// @ts-ignore
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
+const { autoUpdater } = electronUpdater;
 
 let mainWindow: BrowserWindow | null = null;
 let tray: Tray | null = null;
 
 if (process.env.NODE_ENV === 'production') {
-  const sourceMapSupport = require('source-map-support');
-  sourceMapSupport.install();
+  import('source-map-support').then((sourceMapSupport) => {
+    sourceMapSupport.install();
+  });
 }
 
 const isDebug =
   process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
 
+const version = app.getVersion();
+
 if (isDebug) {
-  require('electron-debug')();
+  import('electron-debug').then((electronDebug) => electronDebug.default());
 }
-
-const installExtensions = async () => {
-  const installer = require('electron-devtools-installer');
-  const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-  const extensions = ['REACT_DEVELOPER_TOOLS'];
-
-  return installer
-    .default(
-      extensions.map((name) => installer[name]),
-      forceDownload,
-    )
-    .catch(console.log);
-};
 
 const checkForUpdates = async (): Promise<boolean> => {
   try {
@@ -53,10 +47,39 @@ const checkForUpdates = async (): Promise<boolean> => {
   }
 };
 
+const getAssetPath = (...paths: string[]): string => {
+  const RESOURCES_PATH = app.isPackaged
+    ? path.join(app.getAppPath(), 'assets')
+    : path.join(__dirname, '../../assets');
+
+  return path.join(RESOURCES_PATH, ...paths);
+};
+
+const CONFIG_PATH = path.join(app.getPath('userData'), 'config.json');
+const ICON = getAssetPath('icon.png').replace('\\C', 'C').split(';')[0];
+
+const loadConfig = () => {
+  try {
+    if (fs.existsSync(CONFIG_PATH)) {
+      const data = fs.readFileSync(CONFIG_PATH, 'utf-8');
+      return JSON.parse(data);
+    }
+  } catch (error) {
+    console.error('Error loading config:', error);
+  }
+  return {};
+};
+
+const saveConfig = (config: any) => {
+  try {
+    fs.writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2));
+  } catch (error) {
+    console.error('Error saving config:', error);
+  }
+};
+
 const createTray = () => {
-  tray = new Tray(
-    'https://github.com/binary-blazer/ym-desktop/blob/v1.4.3/assets/icon.png',
-  );
+  tray = new Tray(ICON);
 
   const contextMenu = Menu.buildFromTemplate([
     {
@@ -118,29 +141,30 @@ const createTray = () => {
   tray.setContextMenu(contextMenu);
 };
 
+const changeZoom = (factor: number) => {
+  if (!mainWindow) return;
+  const currentZoom = mainWindow.webContents.getZoomLevel();
+  const newZoom = currentZoom + factor;
+  mainWindow.webContents.setZoomLevel(newZoom);
+
+  const config = loadConfig();
+  config.zoomLevel = newZoom;
+  saveConfig(config);
+};
+
 const createWindow = async (updateAvailable: boolean) => {
-  if (isDebug) {
-    await installExtensions();
-  }
-
-  const RESOURCES_PATH = app.isPackaged
-    ? path.join(app.getAppPath(), 'assets')
-    : path.join(__dirname, '../../assets');
-
-  const getAssetPath = (...paths: string[]): string => {
-    return path.join(RESOURCES_PATH, ...paths);
-  };
-
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
   mainWindow = new BrowserWindow({
     show: false,
     width,
     height,
-    icon: getAssetPath('icon.png'),
+    icon: ICON,
     title: 'YouTube Music Desktop',
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: app.isPackaged
+        ? path.join(__dirname, 'preload.js')
+        : path.join(__dirname, '../../.ym/dll/preload.js'),
     },
   });
 
@@ -149,6 +173,12 @@ const createWindow = async (updateAvailable: boolean) => {
       throw new Error('"mainWindow" is not defined');
     }
     mainWindow.setTitle('YouTube Music Desktop');
+
+    const config = loadConfig();
+    if (typeof config.zoomLevel === 'number') {
+      mainWindow.webContents.setZoomLevel(config.zoomLevel);
+    }
+
     if (process.env.START_MINIMIZED) {
       mainWindow.minimize();
     } else {
@@ -250,6 +280,21 @@ const createWindow = async (updateAvailable: boolean) => {
         },
         { type: 'separator' },
         {
+          label: 'Zoom In',
+          accelerator: 'CommandOrControl+=',
+          click: () => {
+            changeZoom(0.5);
+          },
+        },
+        {
+          label: 'Zoom Out',
+          accelerator: 'CommandOrControl+-',
+          click: () => {
+            changeZoom(-0.5);
+          },
+        },
+        { type: 'separator' },
+        {
           label: 'Quit',
           click: () => {
             app.exit();
@@ -301,4 +346,10 @@ ipcMain.on('navigate-back', () => {
 
 ipcMain.on('navigate-forward', () => {
   mainWindow?.webContents.goForward();
+});
+
+ipcMain.on('resize-window', (event, deltaY) => {
+  const step = 0.1;
+  const change = deltaY > 0 ? -step : step;
+  changeZoom(change);
 });
