@@ -54,7 +54,9 @@ const checkForUpdates = async (): Promise<boolean> => {
 };
 
 const createTray = () => {
-  tray = new Tray("https://github.com/binary-blazer/ym-desktop/blob/v1.4.3/assets/icon.png");
+  tray = new Tray(
+    'https://github.com/binary-blazer/ym-desktop/blob/v1.4.3/assets/icon.png',
+  );
 
   const contextMenu = Menu.buildFromTemplate([
     {
