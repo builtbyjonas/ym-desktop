@@ -141,14 +141,26 @@ const createTray = () => {
   tray.setContextMenu(contextMenu);
 };
 
+const MIN_ZOOM = -3;
+const MAX_ZOOM = 3;
+
 const changeZoom = (factor: number) => {
   if (!mainWindow) return;
   const currentZoom = mainWindow.webContents.getZoomLevel();
-  const newZoom = currentZoom + factor;
+  const newZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, currentZoom + factor));
   mainWindow.webContents.setZoomLevel(newZoom);
 
   const config = loadConfig();
   config.zoomLevel = newZoom;
+  saveConfig(config);
+};
+
+const resetZoom = () => {
+  if (!mainWindow) return;
+  mainWindow.webContents.setZoomLevel(0);
+
+  const config = loadConfig();
+  config.zoomLevel = 0;
   saveConfig(config);
 };
 
@@ -166,6 +178,10 @@ const createWindow = async (updateAvailable: boolean) => {
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.ym/dll/preload.js'),
     },
+  });
+
+  mainWindow.webContents.on('zoom-changed', (_event, zoomDirection) => {
+    changeZoom(zoomDirection === 'in' ? 0.5 : -0.5);
   });
 
   mainWindow.webContents.on('did-finish-load', async () => {
@@ -291,6 +307,13 @@ const createWindow = async (updateAvailable: boolean) => {
           accelerator: 'CommandOrControl+-',
           click: () => {
             changeZoom(-0.5);
+          },
+        },
+        {
+          label: 'Reset Zoom',
+          accelerator: 'CommandOrControl+0',
+          click: () => {
+            resetZoom();
           },
         },
         { type: 'separator' },
